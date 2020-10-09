@@ -18,7 +18,7 @@ subsFileList = [file for file in os.listdir(data_dir) if '.csv' in file]
 
 # check does output file exist, if not create it
 outputFilePath  = 'D:\\'
-outputFileName  = 'subscriber.txt'
+outputFileName  = 'subscriber_cmts.txt'
 outputFile      = outputFilePath + outputFileName
 
 if os.path.exists(outputFile):
@@ -58,6 +58,7 @@ for subFile in subsFileList:
             facicode = row[14]
             faciname = row[15]
             modelname = row[16]
+            cmts_node = row[17]
 
             result = ('{' + '"id":{},"method":"object.set","params":'.format(index) +
                       '{"type":"subscriber","assignedId":' +
@@ -78,7 +79,8 @@ for subFile in subsFileList:
                       '"street":"{}",'.format(street) +
                       '"facicode":"{}",'.format(facicode) +
                       '"faciname":"{}",'.format(faciname) +
-                      '"modelname":"{}"'.format(modelname) +
+                      '"modelname":"{}",'.format(modelname) +
+                      '"cmts_node":"{}"'.format(cmts_node) +
                       '}}}'
                       )
             subIdCount += 1
